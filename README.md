@@ -35,12 +35,6 @@
 
 ---
 
-## 📁 Folder Structure
-
-/tools ├── word-counter.html ├── json-formatter.html ├── qr-generator.html ├── image-compressor.html ├── colors.html /assets └── logo.svg js/ └── main.js about.html privacy.html contact.html index.html
-
----
-
 ## 🛡️ Privacy First
 
 KikaQuickTools doesn't upload or store your data. Everything is processed locally using JavaScript. What happens in your browser stays in your browser.
@@ -50,5 +44,5 @@ KikaQuickTools doesn't upload or store your data. Everything is processed locall
 ## 📫 Contact
 
 Want to contribute or suggest a tool?  
-Reach out at [GitHub](https://github.com/luvbyte) or via the [Contact Form](https://kikaquicktools.com/contact.html).
+Reach out at [GitHub](https://github.com/luvbyte) or via the [Contact Form](https://kika-quicktools.netlify.app/contact.html).
 
