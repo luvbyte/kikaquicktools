@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pick colors, copy hex codes, and generate color and font palettes with this modern online color picker tool."
+    />
+    <meta
+      name="keywords"
+      content="Color Picker, HEX, RGB, Font Palette, Color Palette Generator, Online Tool"
+    />
+    <meta name="author" content="Luvbyte" />
+    <title>Color Picker & Palette Generator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+        color: #333;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
+      .main-box {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-top: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+      .palette-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .color-swatch {
+        width: 100px;
+        height: 100px;
+        border-radius: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        color: white;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .font-sample {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        background: #f1f1f1;
+        margin: 0.5rem 0;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-box">
+        <h2 class="text-center mb-4">🎨 Color Picker & Palette Generator</h2>
+
+        <div class="mb-3 text-center">
+          <input type="color" id="colorPicker" value="#3498db" />
+          <p class="mt-2">
+            Selected Color: <span id="colorCode">#3498db</span>
+            <button class="btn btn-sm btn-outline-secondary" id="copyColor">
+              Copy
+            </button>
+          </p>
+        </div>
+
+        <h4>🎨 Generate Color Palette</h4>
+        <button class="btn btn-primary mb-3" id="generatePalette">
+          Generate Palette
+        </button>
+        <div class="palette-box" id="palette"></div>
+
+        <h4 class="mt-4">📝 Font Palette</h4>
+        <div id="fonts">
+          <div
+            class="font-sample"
+            style="font-family: &quot;Inter&quot;, sans-serif"
+          >
+            Inter - This is a font sample
+          </div>
+          <div
+            class="font-sample"
+            style="font-family: &quot;Roboto&quot;, sans-serif"
+          >
+            Roboto - This is a font sample
+          </div>
+          <div
+            class="font-sample"
+            style="font-family: &quot;Merriweather&quot;, serif"
+          >
+            Merriweather - This is a font sample
+          </div>
+          <div
+            class="font-sample"
+            style="font-family: &quot;Poppins&quot;, sans-serif"
+          >
+            Poppins - This is a font sample
+          </div>
+        </div>
+        
+        
+      </div>
+      
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const $colorPicker = $("#colorPicker");
+      const $colorCode = $("#colorCode");
+      const $copyColor = $("#copyColor");
+      const $palette = $("#palette");
+
+      $colorPicker.on("input", function () {
+        $colorCode.text($(this).val());
+      });
+
+      $copyColor.click(() => {
+        navigator.clipboard.writeText($colorPicker.val());
+        $copyColor.text("Copied!");
+        setTimeout(() => $copyColor.text("Copy"), 2000);
+      });
+
+      function generateRandomColor() {
+        return (
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0")
+        );
+      }
+
+      $("#generatePalette").click(() => {
+        $palette.empty();
+        for (let i = 0; i < 6; i++) {
+          const color = generateRandomColor();
+          const swatch = $('<div class="color-swatch"></div>')
+            .css("background-color", color)
+            .text(color);
+          swatch.click(() => {
+            navigator.clipboard.writeText(color);
+            swatch.text("Copied!");
+            setTimeout(() => swatch.text(color), 1500);
+          });
+          $palette.append(swatch);
+        }
+      });
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Merriweather&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </body>
+</html>
