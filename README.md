@@ -8,7 +8,7 @@
 
 ## 🌐 Live Demo
 
-👉 [Visit kikaquicktools.com](https://kika-quicktools.netlify.app)
+👉 [Visit kikaquicktools](https://kika-quicktools.netlify.app)
 
 ---
 
